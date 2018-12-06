@@ -8,10 +8,12 @@
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "jacdac.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "public": false
+    "public": false,
+    "installedVersion": "workspace:26d1133d-67cb-4565-3189-b3807c3d7124"
 }
