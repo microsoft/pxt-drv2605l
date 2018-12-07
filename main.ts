@@ -1,16 +1,16 @@
 enum Drv2605Effect {
+    //% block="vibrate"
     Vibrate
 }
 
 /**
- * 
+ * A haptic feedback actuator
  */
+//% color="#00852B" weight=90 icon="\uf292""
 namespace drv2605 {
 
     /* #region Register constants for DRV2605 */
-
-    const DRV2605_ADDR = 0x5A
-
+    const DRV2605_ADDR = 0x5A;
     const DRV2605_REG_STATUS = 0x00
     const DRV2605_REG_MODE = 0x01
     const DRV2605_MODE_INTTRIG = 0x00
@@ -53,6 +53,7 @@ namespace drv2605 {
     const DRV2605_REG_VBAT = 0x21
     const DRV2605_REG_LRARESON = 0x22
 
+
     /* #endregion */
 
     /* #region General Set/Get Register Functions */
@@ -61,7 +62,7 @@ namespace drv2605 {
      * Set registers of the DRV2605
      */
     function setRegister(reg: number, dat: number): void {
-    let _wbuf = control.createBuffer(2);
+        let _wbuf = control.createBuffer(2);
         _wbuf[0] = reg;
         _wbuf[1] = dat;
         pins.i2cWriteBuffer(DRV2605_ADDR, _wbuf);
@@ -85,39 +86,39 @@ namespace drv2605 {
 
     /* #endregion */
 
-    export function setWaveform(slot: number, w: number) {
+    function setWaveform(slot: number, w: number) {
         setRegister(DRV2605_REG_WAVESEQ1 + slot, w);
     }
 
-    export function selectLibrary(lib: number) {
+    function selectLibrary(lib: number) {
         setRegister(DRV2605_REG_LIBRARY, lib);
     }
 
-    export function go() {
+    function go() {
         setRegister(DRV2605_REG_GO, 1);
     }
 
-    export function stop() {
+    function stop() {
         setRegister(DRV2605_REG_GO, 0);
     }
 
-    export function setMode(mode: number) {
+    function setMode(mode: number) {
         setRegister(DRV2605_REG_MODE, mode);
     }
 
-    export function setRealtimeValue(rtp: number) {
+    function setRealtimeValue(rtp: number) {
         setRegister(DRV2605_REG_RTPIN, rtp);
     }
 
-    export function useERM() {
+    function useERM() {
         setRegister(DRV2605_REG_FEEDBACK, getOneRegister(DRV2605_REG_FEEDBACK) & 0x7F);
     }
 
-    export function useLRA() {
+    function useLRA() {
         setRegister(DRV2605_REG_FEEDBACK, getOneRegister(DRV2605_REG_FEEDBACK) | 0x80);
     }
 
-    export function begin(): void {
+    function begin(): void {
 
         setRegister(DRV2605_REG_MODE, 0x00);
 
@@ -133,23 +134,22 @@ namespace drv2605 {
         setRegister(DRV2605_REG_SUSTAINNEG, 0);
         setRegister(DRV2605_REG_BREAK, 0);
         setRegister(DRV2605_REG_AUDIOMAX, 0x64);
-
         // ERM open loop
-
         // turn off N_ERM_LRA
         setRegister(DRV2605_REG_FEEDBACK, getOneRegister(DRV2605_REG_FEEDBACK) & 0x7F);
         // turn on ERM_OPEN_LOOP
         setRegister(DRV2605_REG_CONTROL3, getOneRegister(DRV2605_REG_CONTROL3) | 0x20);
 
     }
-
-
     /**
      * Play the effect for the given amount of time
      */
-    //% blockId=drv2605playeffect block="play %effect for %millis"
+    //% blockId=drv2605playeffect block="play %effect for %millis ms"
+    //% millis.shadow=timePicker
+    //% parts="drv2605l"
     export function playEffect(effect: Drv2605Effect, millis: number): void {
-
+        begin();
+        //TODO
     }
 
 }

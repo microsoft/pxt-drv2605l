@@ -1,4 +1,3 @@
-// Add your code here
 namespace jacdac {
     export class DRV2605L extends ActuatorHostDriver {
         constructor(name: string) {
@@ -13,7 +12,6 @@ namespace jacdac {
                 this.log(`playing ${effect} for ${duration}ms`)
                 drv2605.playEffect(effect, duration);
             }
-
             return true;
         }
     }
