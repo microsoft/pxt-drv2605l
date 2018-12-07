@@ -1,4 +1,5 @@
 namespace jacdac {
+    //% fixedInstances
     export class DRV2605L extends ActuatorHostDriver {
         constructor(name: string) {
             super(name, 300, 5);
@@ -15,4 +16,7 @@ namespace jacdac {
             return true;
         }
     }
+
+    //% fixedInstance whenUsed
+    export const drv2605lService = new DRV2605L("haptic");
 }
