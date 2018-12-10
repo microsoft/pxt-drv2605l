@@ -151,10 +151,281 @@ enum DRV2605_EFFECTS {
     SHORT_DOUBLE_CLICK_MEDIUM_1_100 = 31,
 
     //% block="Short Double Click Medium 2 (80%)"                                       
-    SHORT_DOUBLE_CLICK_MEDIUM_1_80 = 32,
+    SHORT_DOUBLE_CLICK_MEDIUM_2_80 = 32,
 
-    //% block="Short Double Click Medium 2 (60%)"                                       
-    SHORT_DOUBLE_CLICK_MEDIUM_1_60 = 33
+    //% block="Short Double Click Medium 3 (60%)"                                       
+    SHORT_DOUBLE_CLICK_MEDIUM_3_60 = 33,
+
+
+    //% block="Short Double Sharp Tick 1 (100%)"                                               
+    SHORT_DOUBLE_SHARP_TICK_1_100 = 34,
+
+    //% block="Short Double Sharp Tick 2 (80%)"                                               
+    SHORT_DOUBLE_SHARP_TICK_2_80 = 35,
+
+    //% block="Short Double Sharp Tick 3 (60%)"                                               
+    SHORT_DOUBLE_SHARP_TICK_3_60 = 36,
+
+    //% block="Long Double Sharp Click Strong 1 (100%)"                        
+    LONG_DOUBLE_SHARP_CLICK_STRONG_1_100 = 37,
+
+    //% block="Long Double Sharp Click Strong 2 (80%)"                        
+    LONG_DOUBLE_SHARP_CLICK_STRONG_2_80 = 38,
+
+    //% block="Long Double Sharp Click Strong 3 (60%)"                        
+    LONG_DOUBLE_SHARP_CLICK_STRONG_3_60 = 39,
+
+    //% block="Long Double Sharp Click Strong 4 (30%)"                        
+    LONG_DOUBLE_SHARP_CLICK_STRONG_4_30 = 40,
+
+    //% block="Long Double Sharp Click Medium 1 (100%)"                        
+    LONG_DOUBLE_SHARP_CLICK_MEDIUM_1_100 = 41,
+
+    //% block="Long Double Sharp Click Medium 2 (80%)"                        
+    LONG_DOUBLE_SHARP_CLICK_MEDIUM_2_80 = 42,
+
+    //% block="Long Double Sharp Click Medium 3 (60%)"                        
+    LONG_DOUBLE_SHARP_CLICK_MEDIUM_3_60 = 43,
+
+    //% block="Long Double Sharp Tick 1 (100%)"                                               
+    LONG_DOUBLE_SHARP_TICK_1_100 = 44,
+
+    //% block="Long Double Sharp Tick 2 (80%)"                                               
+    LONG_DOUBLE_SHARP_TICK_2_80 = 45,
+
+    //% block="Long Double Sharp Tick 3 (60%)"                                               
+    LONG_DOUBLE_SHARP_TICK_3_60 = 46,
+
+    //% block="Buzz 1 (100%)"                                               
+    BUZZ_1_100 = 47,
+
+    //% block="Buzz 2 (80%)"                                               
+    BUZZ_2_80 = 48,
+
+    //% block="Buzz 3 (60%)"                                               
+    BUZZ_3_60 = 49,
+
+    //% block="Buzz 4 (40%)"                                               
+    BUZZ_4_40 = 50,
+
+    //% block="Buzz 5 (20%)"                                               
+    BUZZ_5_20 = 51,
+
+    //% block="Pulsing Strong 1 (100%)"                                               
+    PULSING_STRONG_1_100 = 52,
+
+    //% block="Pulsing Strong 2 (60%)"                                               
+    PULSING_STRONG_2_60 = 53,
+
+    //% block="Pulsing Medium 1 (100%)"                                               
+    PULSING_MEDIUM_1_100 = 54,
+
+    //% block="Pulsing Medium 2 (60%)"                                               
+    PULSING_MEDIUM_2_60 = 55,
+
+    //% block="Pulsing Sharp 1 (100%)"                                               
+    PULSING_SHARP_1_100 = 56,
+
+    //% block="Pulsing Sharp 2 (60%)"                                               
+    PULSING_SHARP_2_60 = 57,
+
+    //% block="Transition Click 1 (100%)"                                               
+    TRANSITION_CLICK_1_100 = 58,
+
+    //% block="Transition Click 2 (80%)"                                               
+    TRANSITION_CLICK_2_80 = 59,
+
+    //% block="Transition Click 3 (60%)"                                               
+    TRANSITION_CLICK_3_60 = 60,
+
+    //% block="Transition Click 4 (40%)"                                               
+    TRANSITION_CLICK_4_40 = 61,
+
+    //% block="Transition Click 5 (20%)"                                               
+    TRANSITION_CLICK_5_20 = 62,
+
+    //% block="Transition Click 6 (10%)"                                               
+    TRANSITION_CLICK_6_10 = 63,
+
+    //% block="Transition Hum 1 (100%)"                                               
+    TRANSITION_HUM_1_100 = 64,
+
+    //% block="Transition Hum 2 (80%)"                                               
+    TRANSITION_HUM_2_80 = 65,
+
+    //% block="Transition Hum 3 (60%)"                                               
+    TRANSITION_HUM_3_60 = 66,
+
+    //% block="Transition Hum 4 (40%)"                                               
+    TRANSITION_HUM_4_40 = 67,
+
+    //% block="Transition Hum 5 (20%)"                                               
+    TRANSITION_HUM_5_20 = 68,
+
+    //% block="Transition Hum 6 (10%)"                                               
+    TRANSITION_HUM_6_10 = 69,
+
+    //% block="Transition Ramp Down Long Smooth 1 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SMOOTH_1_100_TO_0 = 70,
+
+    //% block="Transition Ramp Down Long Smooth 2 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SMOOTH_2_100_TO_0 = 71,
+
+    //% block="Transition Ramp Down Medium Smooth 1 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SMOOTH_1_100_TO_0 = 72,
+
+    //% block="Transition Ramp Down Medium Smooth 2 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SMOOTH_2_100_TO_0 = 73,
+
+    //% block="Transition Ramp Down Short Smooth 1 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SMOOTH_1_100_TO_0 = 74,
+
+    //% block="Transition Ramp Down Short Smooth 2 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SMOOTH_2_100_TO_0 = 75,
+
+    //% block="Transition Ramp Down Long Sharp 1 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SHARP_1_100_TO_0 = 76,
+
+    //% block="Transition Ramp Down Long Sharp 2 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SHARP_2_100_TO_0 = 77,
+
+    //% block="Transition Ramp Down Medium Sharp 1 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SHARP_1_100_TO_0 = 78,
+
+    //% block="Transition Ramp Down Medium Sharp 2 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SHARP_2_100_TO_0 = 79,
+
+    //% block="Transition Ramp Down Short Sharp 1 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SHARP_1_100_TO_0 = 80,
+
+    //% block="Transition Ramp Down Short Sharp 2 (100 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SHARP_2_100_TO_0 = 81,
+
+    //% block="Transition Ramp Up Long Smooth 1 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_LONG_SMOOTH_1_0_TO_100 = 82,
+
+    //% block="Transition Ramp Up Long Smooth 2 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_LONG_SMOOTH_2_0_TO_100 = 83,
+
+    //% block="Transition Ramp Up Medium Smooth 1 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SMOOTH_1_0_TO_100 = 84,
+
+    //% block="Transition Ramp Up Medium Smooth 2 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SMOOTH_2_0_TO_100 = 85,
+
+    //% block="Transition Ramp Up Short Smooth 1 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SMOOTH_1_0_TO_100 = 86,
+
+    //% block="Transition Ramp Up Short Smooth 2 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SMOOTH_2_0_TO_100 = 87,
+
+    //% block="Transition Ramp Up Long Sharp 1 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_LONG_SHARP_1_0_TO_100 = 88,
+
+    //% block="Transition Ramp Up Long Sharp 2 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_LONG_SHARP_2_0_TO_100 = 89,
+
+    //% block="Transition Ramp Up Medium Sharp 1 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SHARP_1_0_TO_100 = 90,
+
+    //% block="Transition Ramp Up Medium Sharp 2 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SHARP_2_0_TO_100 = 91,
+
+    //% block="Transition Ramp Up Short Sharp 1 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SHARP_1_0_TO_100 = 92,
+
+    //% block="Transition Ramp Up Short Sharp 2 (0 TO 100%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SHARP_2_0_TO_100 = 93,
+
+    //% block="Transition Ramp Down Long Smooth 1 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SMOOTH_1_50_TO_0 = 94,
+
+    //% block="Transition Ramp Down Long Smooth 2 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SMOOTH_2_50_TO_0 = 95,
+
+    //% block="Transition Ramp Down Medium Smooth 1 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SMOOTH_1_50_TO_0 = 96,
+
+    //% block="Transition Ramp Down Medium Smooth 2 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SMOOTH_2_50_TO_0 = 97,
+
+    //% block="Transition Ramp Down Short Smooth 1 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SMOOTH_1_50_TO_0 = 98,
+
+    //% block="Transition Ramp Down Short Smooth 2 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SMOOTH_2_50_TO_0 = 99,
+
+    //% block="Transition Ramp Down Long Sharp 1 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SHARP_1_50_TO_0 = 100,
+
+    //% block="Transition Ramp Down Long Sharp 2 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_LONG_SHARP_2_50_TO_0 = 101,
+
+    //% block="Transition Ramp Down Medium Sharp 1 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SHARP_1_50_TO_0 = 102,
+
+    //% block="Transition Ramp Down Medium Sharp 2 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_MEDIUM_SHARP_2_50_TO_0 = 103,
+
+    //% block="Transition Ramp Down Short Sharp 1 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SHARP_1_50_TO_0 = 104,
+
+    //% block="Transition Ramp Down Short Sharp 2 (50 to 0%)"                                               
+    TRANSITION_RAMP_DOWN_SHORT_SHARP_2_50_TO_0 = 105,
+
+    //% block="Transition Ramp Up Long Smooth 1 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_LONG_SMOOTH_1_0_TO_50 = 106,
+
+    //% block="Transition Ramp Up Long Smooth 2 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_LONG_SMOOTH_2_0_TO_50 = 107,
+
+    //% block="Transition Ramp Up Medium Smooth 1 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SMOOTH_1_0_TO_50 = 108,
+
+    //% block="Transition Ramp Up Medium Smooth 2 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SMOOTH_2_0_TO_50 = 109,
+
+    //% block="Transition Ramp Up Short Smooth 1 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SMOOTH_1_0_TO_50 = 110,
+
+    //% block="Transition Ramp Up Short Smooth 2 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SMOOTH_2_0_TO_50 = 111,
+
+    //% block="Transition Ramp Up Long Sharp 1 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_LONG_SHARP_1_0_TO_50 = 112,
+
+    //% block="Transition Ramp Up Long Sharp 2 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_LONG_SHARP_2_0_TO_50 = 113,
+
+    //% block="Transition Ramp Up Medium Sharp 1 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SHARP_1_0_TO_50 = 114,
+
+    //% block="Transition Ramp Up Medium Sharp 2 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_MEDIUM_SHARP_2_0_TO_50 = 115,
+
+    //% block="Transition Ramp Up Short Sharp 1 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SHARP_1_0_TO_50 = 116,
+
+    //% block="Transition Ramp Up Short Sharp 2 (0 to 50%)"                                               
+    TRANSITION_RAMP_UP_SHORT_SHARP_2_0_TO_50 = 117,
+
+    //% block="Long Buzz 100% (Programmatic Stopping)"                                               
+    LONG_BUZZ_PROGRAMMATIC_STOPPING_100 = 118,
+
+    //% block="Smooth Hum 1 (50%)"                                               
+    SMOOTH_HUM_1_50 = 119,
+
+    //% block="Smooth Hum 2 (40%)"                                               
+    SMOOTH_HUM_1_40 = 120,
+
+    //% block="Smooth Hum 3 (30%)"                                               
+    SMOOTH_HUM_1_30 = 121,
+
+    //% block="Smooth Hum 4 (20%)"                                               
+    SMOOTH_HUM_1_20 = 122,
+
+    //% block="Smooth Hum 5 (10%)"                                               
+    SMOOTH_HUM_1_10 = 123
 }
 
 
