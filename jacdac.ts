@@ -1,6 +1,6 @@
 namespace jacdac {
     //% fixedInstances
-    export class DRV2605L extends ActuatorHostDriver {
+    export class DRV2605L extends ActuatorService {
         constructor(name: string) {
             super(name, 300, 5);
         }
@@ -10,8 +10,8 @@ namespace jacdac {
             let duration = this.state.getNumber(NumberFormat.UInt32LE, 1);
 
             if (duration > 0) {
-                this.log(`playing ${effect} for ${duration}ms`)
-                drv2605.playEffect(effect, duration);
+                this.log(`playing ${effect}`)
+                drv2605l.playHapticEffect(effect);
             }
             return true;
         }

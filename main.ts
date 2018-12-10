@@ -1,155 +1,276 @@
-enum Drv2605Effect {
-    //% block="vibrate"
-    Vibrate
+enum DRV2605_MOTORMODE {
+    //% block="ERM"
+    ERM,
+    //% block="LRA"
+    LRA
 }
+
+enum DRV2605_OPERATION_MODES {
+
+    //% block="Internal Trigger"
+    INTERNAL_TRIGGER_MODE = 0x00,
+
+    //% block="External Trigger (edge)"
+    EXTERNAL_TRIGGER_MODE_EDGE = 0x01,
+
+    //% block="External Trigger (level)"   
+    EXTERNAL_TRIGGER_MODE_LEVEL = 0x02,
+
+    //% block="Analog Input"   
+    ANALOG_INPUT_MODE = 0x03,
+
+    //% block="Audio-to-vibe"   
+    AUDIO_TO_VIBE = 0x04,
+
+    //% block="Real time playback"   
+    REAL_TIME_PLAYBACK = 0x05,
+
+    //% block="Diagnostics"   
+    DIAGNOSTICS = 0x06,
+
+    //% block="Calibration"   
+    CALIBRATION = 0x07,
+}
+
+enum DRV2605_LIBRARIES {
+
+    //% block="ERM Library A"
+    ERM_LIBRARY_A = 1,
+
+    //% block="ERM Library B"
+    ERM_LIBRARY_B = 2,
+
+    //% block="ERM Library C"
+    ERM_LIBRARY_C = 3,
+
+    //% block="ERM Library D"
+    ERM_LIBRARY_D = 4,
+
+    //% block="ERM Library E"
+    ERM_LIBRARY_E = 5,
+
+    //% block="LRA Library"
+    LRA_LIBRARY = 6,
+
+    //% block="ERM Library F"
+    ERM_LIBRARY_F = 7,
+}
+
+enum DRV2605_EFFECTS {
+    //% block="Strong Click (100%)"
+    STRONG_CLICK_100 = 1,
+
+    //% block="Strong Click (60%)"
+    STRONG_CLICK_60 = 2,
+
+    //% block="Strong Click (30%)"
+    STRONG_CLICK_30 = 3,
+
+    //% block="Sharp Click (100%)"
+    SHARP_CLICK_100 = 4,
+
+    //% block="Sharp Click (60%)"
+    SHARP_CLICK_60 = 5,
+
+    //% block="Sharp Click (30%)"
+    SHARP_CLICK_30 = 6,
+
+    //% block="Soft Bump (100%)"
+    SOFT_BUMP_100 = 7,
+
+    //% block="Soft Bump (60%)"
+    SOFT_BUMP_60 = 8,
+
+    //% block="Soft Bump (30%)"
+    SOFT_BUMP_30 = 9,
+
+    //% block="Double Click (100%)"
+    DOUBLE_CLICK_100 = 10,
+
+    //% block="Double Click (60%)"
+    DOUBLE_CLICK_60 = 11,
+
+    //% block="Triple Click (100%)"
+    TRIPLE_CLICK_100 = 12,
+
+    //% block="Soft Fuzz (60%)"
+    SOFT_FUZZ_60 = 13,
+
+    //% block="Strong Buzz (100%)"
+    STRONG_BUZZ_100 = 14,
+
+    //% block="750ms Alert (100%)"
+    ALERT_750MS_100 = 15,
+
+    //% block="1000ms Alert (100%)"
+    ALERT_1000MS_100 = 16,
+
+    //% block="Strong Click 1 (100%)"
+    STRONG_CLICK_1_100 = 17,
+
+    //% block="Strong Click 2 (80%)"
+    STRONG_CLICK_2_80 = 18,
+
+    //% block="Strong Click 3 (60%)"
+    STRONG_CLICK_3_60 = 19,
+
+    //% block="Strong Click 4 (30%)"
+    STRONG_CLICK_4_30 = 20,
+
+    //% block="Medium Click 1 (100%)"
+    MEDIUM_CLICK_1_100 = 21,
+
+    //% block="Medium Click 2 (80%)"        
+    MEDIUM_CLICK_2_80 = 22,
+
+    //% block="Medium Click 3 (60%)"                
+    MEDIUM_CLICK_3_60 = 23,
+
+    //% block="Sharp Tick 1 (100%)"                        
+    SHARP_TICK_1_100 = 24,
+
+    //% block="Sharp Tick 2 (80%)"                        
+    SHARP_TICK_2_80 = 25,
+
+    //% block="Sharp Tick 3 (60%)"                        
+    SHARP_TICK_3_60 = 26,
+
+    //% block="Short Double Click Strong 1 (100%)"                        
+    SHORT_DOUBLE_CLICK_STRONG_1_100 = 27,
+
+    //% block="Short Double Click Strong 2 (80%)"                        
+    SHORT_DOUBLE_CLICK_STRONG_2_80 = 28,
+
+    //% block="Short Double Click Strong 3 (60%)"                                
+    SHORT_DOUBLE_CLICK_STRONG_3_60 = 29,
+
+    //% block="Short Double Click Strong 4 (30%)"                               
+    SHORT_DOUBLE_CLICK_STRONG_4_30 = 30,
+
+    //% block="Short Double Click Medium 1 (100%)"                                       
+    SHORT_DOUBLE_CLICK_MEDIUM_1_100 = 31,
+
+    //% block="Short Double Click Medium 2 (80%)"                                       
+    SHORT_DOUBLE_CLICK_MEDIUM_1_80 = 32,
+
+    //% block="Short Double Click Medium 2 (60%)"                                       
+    SHORT_DOUBLE_CLICK_MEDIUM_1_60 = 33
+}
+
 
 /**
  * A haptic feedback actuator
  */
-//% color="#00852B" weight=90 icon="\uf292""
-namespace drv2605 {
+//% color="#00852B" weight=90 icon="\uf0b2"
+namespace drv2605l{
 
     /* #region Register constants for DRV2605 */
-    const DRV2605_ADDR = 0x5A;
-    const DRV2605_REG_STATUS = 0x00
-    const DRV2605_REG_MODE = 0x01
-    const DRV2605_MODE_INTTRIG = 0x00
-    const DRV2605_MODE_EXTTRIGEDGE = 0x01
-    const DRV2605_MODE_EXTTRIGLVL = 0x02
-    const DRV2605_MODE_PWMANALOG = 0x03
-    const DRV2605_MODE_AUDIOVIBE = 0x04
-    const DRV2605_MODE_REALTIME = 0x05
-    const DRV2605_MODE_DIAGNOS = 0x06
-    const DRV2605_MODE_AUTOCAL = 0x07
 
-    const DRV2605_REG_RTPIN = 0x02
+    const DRV2605_ADDR = 0x5A
+    const DRV2605_REG_MODE = 0x01
     const DRV2605_REG_LIBRARY = 0x03
     const DRV2605_REG_WAVESEQ1 = 0x04
-    const DRV2605_REG_WAVESEQ2 = 0x05
-    const DRV2605_REG_WAVESEQ3 = 0x06
-    const DRV2605_REG_WAVESEQ4 = 0x07
-    const DRV2605_REG_WAVESEQ5 = 0x08
-    const DRV2605_REG_WAVESEQ6 = 0x09
-    const DRV2605_REG_WAVESEQ7 = 0x0A
-    const DRV2605_REG_WAVESEQ8 = 0x0B
-
     const DRV2605_REG_GO = 0x0C
-    const DRV2605_REG_OVERDRIVE = 0x0D
-    const DRV2605_REG_SUSTAINPOS = 0x0E
-    const DRV2605_REG_SUSTAINNEG = 0x0F
-    const DRV2605_REG_BREAK = 0x10
-    const DRV2605_REG_AUDIOCTRL = 0x11
-    const DRV2605_REG_AUDIOLVL = 0x12
-    const DRV2605_REG_AUDIOMAX = 0x13
-    const DRV2605_REG_RATEDV = 0x16
-    const DRV2605_REG_CLAMPV = 0x17
-    const DRV2605_REG_AUTOCALCOMP = 0x18
-    const DRV2605_REG_AUTOCALEMP = 0x19
     const DRV2605_REG_FEEDBACK = 0x1A
-    const DRV2605_REG_CONTROL1 = 0x1B
-    const DRV2605_REG_CONTROL2 = 0x1C
-    const DRV2605_REG_CONTROL3 = 0x1D
-    const DRV2605_REG_CONTROL4 = 0x1E
-    const DRV2605_REG_VBAT = 0x21
-    const DRV2605_REG_LRARESON = 0x22
-
 
     /* #endregion */
 
-    /* #region General Set/Get Register Functions */
-
     /**
-     * Set registers of the DRV2605
-     */
-    function setRegister(reg: number, dat: number): void {
-        let _wbuf = control.createBuffer(2);
-        _wbuf[0] = reg;
-        _wbuf[1] = dat;
-        pins.i2cWriteBuffer(DRV2605_ADDR, _wbuf);
+    * Set the haptic effect of the DRV2605
+    */
+    //% block 
+    export function setHapticEffect(effect: DRV2605_EFFECTS) {
+        writeRegister(DRV2605_ADDR, DRV2605_REG_WAVESEQ1, effect);
     }
 
-    /**
-     * Get a single register of the DRV2605
-     */
-    function getOneRegister(reg: number): number {
-        pins.i2cWriteNumber(DRV2605_ADDR, reg, NumberFormat.UInt8BE);
-        return pins.i2cReadNumber(DRV2605_ADDR, NumberFormat.UInt8BE);
-    }
-
-    /**
-     * Get two registers of the DRV2605, in UInt16LE format
-     */
-    function getTwoRegister(reg: number): number {
-        pins.i2cWriteNumber(DRV2605_ADDR, reg, NumberFormat.UInt8BE);
-        return pins.i2cReadNumber(DRV2605_ADDR, NumberFormat.UInt16LE);
-    }
-
-    /* #endregion */
-
-    function setWaveform(slot: number, w: number) {
-        setRegister(DRV2605_REG_WAVESEQ1 + slot, w);
-    }
-
-    function selectLibrary(lib: number) {
-        setRegister(DRV2605_REG_LIBRARY, lib);
+    function stopHapticEffect() {
+        writeRegister(DRV2605_ADDR, DRV2605_REG_WAVESEQ1+1, 0);
     }
 
     function go() {
-        setRegister(DRV2605_REG_GO, 1);
+        writeRegister(DRV2605_ADDR, DRV2605_REG_GO, 1);
     }
 
     function stop() {
-        setRegister(DRV2605_REG_GO, 0);
+        writeRegister(DRV2605_ADDR, DRV2605_REG_GO, 0);
     }
 
-    function setMode(mode: number) {
-        setRegister(DRV2605_REG_MODE, mode);
-    }
 
-    function setRealtimeValue(rtp: number) {
-        setRegister(DRV2605_REG_RTPIN, rtp);
-    }
-
-    function useERM() {
-        setRegister(DRV2605_REG_FEEDBACK, getOneRegister(DRV2605_REG_FEEDBACK) & 0x7F);
-    }
-
-    function useLRA() {
-        setRegister(DRV2605_REG_FEEDBACK, getOneRegister(DRV2605_REG_FEEDBACK) | 0x80);
-    }
-
-    function begin(): void {
-
-        setRegister(DRV2605_REG_MODE, 0x00);
-
-
-        setRegister(DRV2605_REG_RTPIN, 0x00); // no real-time-playback
-
-        setRegister(DRV2605_REG_WAVESEQ1, 1); // strong click
-        setRegister(DRV2605_REG_WAVESEQ2, 0);
-
-        setRegister(DRV2605_REG_OVERDRIVE, 0); // no overdrive
-
-        setRegister(DRV2605_REG_SUSTAINPOS, 0);
-        setRegister(DRV2605_REG_SUSTAINNEG, 0);
-        setRegister(DRV2605_REG_BREAK, 0);
-        setRegister(DRV2605_REG_AUDIOMAX, 0x64);
-        // ERM open loop
-        // turn off N_ERM_LRA
-        setRegister(DRV2605_REG_FEEDBACK, getOneRegister(DRV2605_REG_FEEDBACK) & 0x7F);
-        // turn on ERM_OPEN_LOOP
-        setRegister(DRV2605_REG_CONTROL3, getOneRegister(DRV2605_REG_CONTROL3) | 0x20);
-
-    }
     /**
-     * Play the effect for the given amount of time
-     */
-    //% blockId=drv2605playeffect block="play %effect for %millis ms"
-    //% millis.shadow=timePicker
-    //% parts="drv2605l"
-    export function playEffect(effect: Drv2605Effect, millis: number): void {
-        begin();
-        //TODO
+    * Set the internal libraries of the DRV2605
+    */
+    //% block 
+    export function selectInternalLibrary(lib: DRV2605_LIBRARIES) {
+        writeRegister(DRV2605_ADDR, DRV2605_REG_LIBRARY, lib);
     }
 
+    /**
+    * Set the internal operating mode of the DRV2605
+    */
+    //% block   
+    export function setOperationMode(mode: DRV2605_OPERATION_MODES) {
+        writeRegister(DRV2605_ADDR, DRV2605_REG_MODE, mode);
+    }
+
+    /**
+    * Set the motor mode (ERM or LRA) of the DRV2605
+    */
+    //% block
+    export function setMotorMode(mode: DRV2605_MOTORMODE) {
+        switch (mode) {
+            case DRV2605_MOTORMODE.ERM:
+                {
+                   writeRegister(DRV2605_ADDR, DRV2605_REG_FEEDBACK, readRegister8(DRV2605_ADDR, DRV2605_REG_FEEDBACK) & 0x7F);
+                }
+            case DRV2605_MOTORMODE.LRA:
+                {
+                   writeRegister(DRV2605_ADDR, DRV2605_REG_FEEDBACK, readRegister8(DRV2605_ADDR, DRV2605_REG_FEEDBACK) | 0x80);
+                }
+        }
+    }
+
+
+    /**
+     * Setup the DRV2605 haptic sensor with default settings of a Strong Click (100%) effect, 20ms delay and ERM motor
+     */
+    //% block
+    export function setupSensor(): void {
+
+        //Set internal library mode
+        selectInternalLibrary(DRV2605_LIBRARIES.ERM_LIBRARY_A);
+
+        //Set internal trigger
+        setOperationMode(DRV2605_OPERATION_MODES.INTERNAL_TRIGGER_MODE);
+
+        //Set the haptic effect to a strong click (100%) for 20ms
+        setHapticEffect(1);
+
+        //Set the motor mode to ERM
+        setMotorMode(DRV2605_MOTORMODE.ERM);
+    }
+
+
+    /**
+     * Setup the DRV2605 haptic sensor with different modes than default
+     */
+    //% block="setup sensor with library mode of %libraryMode, an operation mode of %operationMode, a motor mode of %motorMode and the haptic effect to %hapticEffect"
+    //% millis.shadow=timePicker
+    export function setupSensorCustom(libraryMode: DRV2605_LIBRARIES, operationMode: DRV2605_OPERATION_MODES, motorMode: DRV2605_MOTORMODE, hapticEffect: DRV2605_EFFECTS) {
+        
+        selectInternalLibrary(libraryMode);
+        setOperationMode(operationMode);
+        setHapticEffect(hapticEffect);
+        setMotorMode(motorMode);
+    }
+
+    /**
+     * Play the haptic effect
+     */
+    //% blockId=drv2605playeffect block="play haptic effect %effect"
+    //% millis.shadow=timePicker
+    export function playHapticEffect(effect: DRV2605_EFFECTS): void {
+        setHapticEffect(effect);
+        stopHapticEffect();
+        go();
+    }
 }

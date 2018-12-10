@@ -9,11 +9,12 @@
     "files": [
         "README.md",
         "main.ts",
-        "jacdac.ts"
+        "jacdac.ts",
+        "registerhelper.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "public": false,
-    "installedVersion": "workspace:3a52d841-28da-481d-47e6-02c9e6bb69aa"
+    "installedVersion": "workspace:34f997d2-c699-4849-8c50-da9083b22700"
 }

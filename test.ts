@@ -1,1 +1,1 @@
-drv2605.playEffect(Drv2605Effect.Vibrate, 500)
+drv2605l.playHapticEffect(DRV2605_EFFECTS.STRONG_CLICK_100);
