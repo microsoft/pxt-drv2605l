@@ -433,7 +433,8 @@ enum DRV2605_EFFECTS {
  * A haptic feedback actuator
  */
 //% color="#00852B" weight=90 icon="\uf0b2"
-namespace drv2605l{
+//% groups='["Effects","Configuration"]'
+namespace drv2605l {
 
     /* #region Register constants for DRV2605 */
 
@@ -444,18 +445,12 @@ namespace drv2605l{
     const DRV2605_REG_GO = 0x0C
     const DRV2605_REG_FEEDBACK = 0x1A
 
-    /* #endregion */
-
-    /**
-    * Set the haptic effect of the DRV2605
-    */
-    //% block 
-    export function setHapticEffect(effect: DRV2605_EFFECTS) {
+    function setHapticEffect(effect: DRV2605_EFFECTS) {
         writeRegister(DRV2605_ADDR, DRV2605_REG_WAVESEQ1, effect);
     }
 
     function stopHapticEffect() {
-        writeRegister(DRV2605_ADDR, DRV2605_REG_WAVESEQ1+1, 0);
+        writeRegister(DRV2605_ADDR, DRV2605_REG_WAVESEQ1 + 1, 0);
     }
 
     function go() {
@@ -472,7 +467,10 @@ namespace drv2605l{
     */
     //% block 
     export function selectInternalLibrary(lib: DRV2605_LIBRARIES) {
-        writeRegister(DRV2605_ADDR, DRV2605_REG_LIBRARY, lib);
+        if (_internalLibrary != lib) {
+            _internalLibrary = lib;
+            _needsSetup = true;
+        }
     }
 
     /**
@@ -487,28 +485,33 @@ namespace drv2605l{
     * Set the motor mode (ERM or LRA) of the DRV2605
     */
     //% block
+    //% group="Configuration"
     export function setMotorMode(mode: DRV2605_MOTORMODE) {
         switch (mode) {
             case DRV2605_MOTORMODE.ERM:
                 {
-                   writeRegister(DRV2605_ADDR, DRV2605_REG_FEEDBACK, readRegister8(DRV2605_ADDR, DRV2605_REG_FEEDBACK) & 0x7F);
+                    writeRegister(DRV2605_ADDR, DRV2605_REG_FEEDBACK, readRegister8(DRV2605_ADDR, DRV2605_REG_FEEDBACK) & 0x7F);
                 }
             case DRV2605_MOTORMODE.LRA:
                 {
-                   writeRegister(DRV2605_ADDR, DRV2605_REG_FEEDBACK, readRegister8(DRV2605_ADDR, DRV2605_REG_FEEDBACK) | 0x80);
+                    writeRegister(DRV2605_ADDR, DRV2605_REG_FEEDBACK, readRegister8(DRV2605_ADDR, DRV2605_REG_FEEDBACK) | 0x80);
                 }
         }
     }
 
+    let _internalLibrary: DRV2605_LIBRARIES = DRV2605_LIBRARIES.ERM_LIBRARY_A;
+    let _needsSetup = true;
 
     /**
      * Setup the DRV2605 haptic sensor with default settings of a Strong Click (100%) effect, 20ms delay and ERM motor
      */
     //% block
-    export function setupSensor(): void {
+    function setupSensor(): void {
+        if (!_needsSetup) return;
+        _needsSetup = false;
 
         //Set internal library mode
-        selectInternalLibrary(DRV2605_LIBRARIES.ERM_LIBRARY_A);
+        writeRegister(DRV2605_ADDR, DRV2605_REG_LIBRARY, _internalLibrary);
 
         //Set internal trigger
         setOperationMode(DRV2605_OPERATION_MODES.INTERNAL_TRIGGER_MODE);
@@ -520,26 +523,14 @@ namespace drv2605l{
         setMotorMode(DRV2605_MOTORMODE.ERM);
     }
 
-
-    /**
-     * Setup the DRV2605 haptic sensor with different modes than default
-     */
-    //% block="setup sensor with library mode of %libraryMode, an operation mode of %operationMode, a motor mode of %motorMode and the haptic effect to %hapticEffect"
-    //% millis.shadow=timePicker
-    export function setupSensorCustom(libraryMode: DRV2605_LIBRARIES, operationMode: DRV2605_OPERATION_MODES, motorMode: DRV2605_MOTORMODE, hapticEffect: DRV2605_EFFECTS) {
-        
-        selectInternalLibrary(libraryMode);
-        setOperationMode(operationMode);
-        setHapticEffect(hapticEffect);
-        setMotorMode(motorMode);
-    }
-
     /**
      * Play the haptic effect
      */
     //% blockId=drv2605playeffect block="play haptic effect %effect"
     //% millis.shadow=timePicker
+    //% group="Effects"
     export function playHapticEffect(effect: DRV2605_EFFECTS): void {
+        setupSensor();
         setHapticEffect(effect);
         stopHapticEffect();
         go();
